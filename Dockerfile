@@ -7,7 +7,7 @@ RUN sed -i 's/127.0.0.1:9000/0.0.0.0:9000/g' /usr/local/etc/php-fpm.d/www.conf
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-COPY --chown=www-data:www-data ./gds /var/www
+COPY --chown=www-data:www-data ./proj /var/www
 
 USER www-data
 
