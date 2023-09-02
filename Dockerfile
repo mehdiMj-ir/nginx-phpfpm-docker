@@ -11,6 +11,6 @@ COPY --chown=www-data:www-data ./proj /var/www
 
 USER www-data
 
-RUN ./composer install --optimize-autoloader --no-dev
+RUN /usr/local/bin/composer install --optimize-autoloader --no-dev
 
 CMD ["php-fpm"]
