@@ -1,0 +1,28 @@
+version: "3.8"
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./proj:/var/www
+      - ./php.ini:/usr/local/etc/php/conf.d/app.ini:ro
+    restart: always
+    working_dir: /var/www
+    tty: true
+    networks:
+      - net
+  server:
+    image: nginx:stable
+    volumes:
+      - ./proj:/var/www
+      - ./server.conf:/etc/nginx/conf.d/default.conf:ro
+    restart: always
+    ports:
+      - "8080:80"
+    tty: true
+    networks:
+      - net
+networks:
+  net:
+    driver: bridge
